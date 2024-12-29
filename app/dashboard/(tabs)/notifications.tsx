@@ -1,8 +1,7 @@
 import Text from "@/components/ui/Text";
 import useGetNotifications from "@/hooks/fetchHooks/useGetNotifications";
 import React from "react";
-import { FlatList, useWindowDimensions, View } from "react-native";
-import SkeletonLoading from 'expo-skeleton-loading';
+import { ActivityIndicator, FlatList, useWindowDimensions, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 function formatDate(dateString: string) {
@@ -31,18 +30,7 @@ const Page = () => {
 
 
     if (loadingNotifications) return (
-        <SkeletonLoading background="#ddd" highlight="white">
-            <View style={{ height: height, margin: 10, gap: 5 }}>
-                <View style={{ backgroundColor: '#ddd', height: 80 }} />
-                <View style={{ backgroundColor: '#ddd', height: 80 }} />
-                <View style={{ backgroundColor: '#ddd', height: 80 }} />
-                <View style={{ backgroundColor: '#ddd', height: 80 }} />
-                <View style={{ backgroundColor: '#ddd', height: 80 }} />
-                <View style={{ backgroundColor: '#ddd', height: 80 }} />
-                <View style={{ backgroundColor: '#ddd', height: 80 }} />
-            </View>
-        </SkeletonLoading>
-
+        <ActivityIndicator/>
     );
 
     return (

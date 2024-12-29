@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "ccerapp",
-    "slug": "ccerApp",
+    "name": "ccerKidsApp2",
+    "slug": "ccer-kids-2",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -25,9 +25,18 @@
       "package": "com.ccerapp.android",
       "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       }
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "cb05c156-4295-4027-9b7d-5c78505a3f8e"
+      }
+    },
+    "owner": "mfrvictorexpo",
+    "plugins": [
+      "expo-router"
+    ]
   }
 }

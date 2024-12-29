@@ -3,18 +3,10 @@ import { router, Stack, Tabs } from "expo-router";
 import { ActivityIndicator, FlatList, ScrollView, StyleSheet, Text, useWindowDimensions, View } from "react-native";
 import useDashBoardController from "./useDashboardController";
 import React from "react";
-import SkeletonLoading from "expo-skeleton-loading";
 import { FontAwesome } from "@expo/vector-icons";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import storageKeys from "@/constants/storageKeys";
 
 const Page = () => {
     const utils = useDashBoardController();
-    const { height, width } = useWindowDimensions();
-
-    // AsyncStorage.removeItem(storageKeys.userData);
-    // AsyncStorage.removeItem(storageKeys.isSuperUser);
-
 
     return (
         <>
@@ -51,17 +43,7 @@ const Page = () => {
 
                 <Text style={{ fontSize: 20, fontWeight: '700', paddingBottom: 10, marginBottom: 10, borderBottomColor: '#ddd', borderBottomWidth: 1 }}>Usuarios</Text>
 
-                {utils.loadingRoles && <SkeletonLoading background="#ddd" highlight="white">
-                    <View style={{ width: 350, height: height, margin: 10, gap: 10 }}>
-                        <View style={{ backgroundColor: '#ddd', height: 50 }} />
-                        <View style={{ backgroundColor: '#ddd', height: 50 }} />
-                        <View style={{ backgroundColor: '#ddd', height: 50 }} />
-                        <View style={{ backgroundColor: '#ddd', height: 50 }} />
-                        <View style={{ backgroundColor: '#ddd', height: 50 }} />
-                        <View style={{ backgroundColor: '#ddd', height: 50 }} />
-                        <View style={{ backgroundColor: '#ddd', height: 50 }} />
-                    </View>
-                </SkeletonLoading>}
+                {utils.loadingRoles && <ActivityIndicator/>}
 
                 <View style={styles.rolesContainer}>
                     {!utils.loadingRoles && utils.roles.length > 0 && (
