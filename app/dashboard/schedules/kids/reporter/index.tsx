@@ -13,37 +13,41 @@ const Page = () => {
             <Modal visible={state.calculateModal} animationType="fade">
                 <View style={{ flex: 1, backgroundColor: 'white' }}>
                     {!state.loadingScheduleResult ? (
-                        <FlatList
-                            data={state.scheduleResult}
-                            renderItem={({ item }: { item: any }) => (
-                                <View style={{ alignSelf: 'center', width: '80%', marginBottom: 20, marginVertical: 20, padding: 15, backgroundColor: '#f9f9f9', borderRadius: 10, shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 5, elevation: 5 }}>
-                                    <Text style={{ fontWeight: 'bold', fontSize: 18, marginBottom: 5 }}>Fecha: {item.date}</Text>
-                                    <Text style={{ marginTop: 10, fontWeight: 'bold', fontSize: 16 }}>Niños grandes</Text>
-                                    <Text>Tema: {item.bigGroup.title}</Text>
-                                    <Text>Objetivo: {item.bigGroup.target}</Text>
-                                    <Text>Citas principales: {item.bigGroup.mainQuotes.map((quote: any, index: any) => (index + 1 === item.bigGroup.mainQuotes.length) ? `${quote}` : `${quote}, `)}</Text>
-                                    <Text>Citas auxiliares: {item.bigGroup.helperQuotes.map((quote: any, index: any) => (index + 1 === item.bigGroup.helperQuotes.length) ? `${quote}` : `${quote}, `)}</Text>
-                                    <Text>Docente: {item.bigGroup.teacher}</Text>
-                                    <Text>Auxiliar: {item.bigGroup.helper}</Text>
-                                    <Text style={{ marginTop: 10, fontWeight: 'bold', fontSize: 16 }}>Niños pequeños</Text>
-                                    <Text>Tema: {item.smallGroup.title}</Text>
-                                    <Text>Objetivo: {item.smallGroup.target}</Text>
-                                    <Text>Citas principales: {item.smallGroup.mainQuotes.map((quote: any, index: any) => (index + 1 === item.smallGroup.mainQuotes.length) ? `${quote}` : `${quote}, `)}</Text>
-                                    <Text>Citas auxiliares: {item.smallGroup.helperQuotes.map((quote: any, index: any) => (index + 1 === item.smallGroup.helperQuotes.length) ? `${quote}` : `${quote}, `)}</Text>
-                                    <Text>Docente: {item.smallGroup.teacher}</Text>
-                                    <Text>Auxiliar: {item.smallGroup.helper}</Text>
-                                </View>
-                            )}
-                        />
+                        <View style={{ flex: 1 }}>
+                            <FlatList
+                                data={state.scheduleResult}
+                                renderItem={({ item }: { item: any }) => (
+                                    <View style={{ alignSelf: 'center', width: '80%', marginBottom: 20, marginVertical: 20, padding: 15, backgroundColor: '#f9f9f9', borderRadius: 10, shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 5, elevation: 5 }}>
+                                        <Text style={{ fontWeight: 'bold', fontSize: 18, marginBottom: 5 }}>Fecha: {item.date}</Text>
+                                        <Text style={{ marginTop: 10, fontWeight: 'bold', fontSize: 16 }}>Niños grandes</Text>
+                                        <Text>Tema: {item.bigGroup.title}</Text>
+                                        <Text>Objetivo: {item.bigGroup.target}</Text>
+                                        <Text>Citas principales: {item.bigGroup.mainQuotes.map((quote: any, index: any) => (index + 1 === item.bigGroup.mainQuotes.length) ? `${quote}` : `${quote}, `)}</Text>
+                                        <Text>Citas auxiliares: {item.bigGroup.helperQuotes.map((quote: any, index: any) => (index + 1 === item.bigGroup.helperQuotes.length) ? `${quote}` : `${quote}, `)}</Text>
+                                        <Text>Docente: {item.bigGroup.teacher}</Text>
+                                        <Text>Auxiliar: {item.bigGroup.helper}</Text>
+                                        <Text style={{ marginTop: 10, fontWeight: 'bold', fontSize: 16 }}>Niños pequeños</Text>
+                                        <Text>Tema: {item.smallGroup.title}</Text>
+                                        <Text>Objetivo: {item.smallGroup.target}</Text>
+                                        <Text>Citas principales: {item.smallGroup.mainQuotes.map((quote: any, index: any) => (index + 1 === item.smallGroup.mainQuotes.length) ? `${quote}` : `${quote}, `)}</Text>
+                                        <Text>Citas auxiliares: {item.smallGroup.helperQuotes.map((quote: any, index: any) => (index + 1 === item.smallGroup.helperQuotes.length) ? `${quote}` : `${quote}, `)}</Text>
+                                        <Text>Docente: {item.smallGroup.teacher}</Text>
+                                        <Text>Auxiliar: {item.smallGroup.helper}</Text>
+                                    </View>
+                                )}
+                            />
+                        </View>
                     ) : (
                         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                             <ActivityIndicator />
                             <Text>Creando Planificaciones...</Text>
                         </View>
                     )}
-                    <Button onPress={utils.confirmCreation}>Guardar, Cerrar y Notificar a Todos</Button>
-                    <Button onPress={utils.copyToClipBoard}>No Guardar y Copiar al Portapapeles</Button>
-                    <Button onPress={() => dispatch({ name: 'closeModal' })}>Cerrar</Button>
+                    <View>
+                        <Button onPress={utils.confirmCreation}>Guardar, Cerrar y Notificar a Todos</Button>
+                        <Button onPress={utils.copyToClipBoard}>No Guardar y Copiar al Portapapeles</Button>
+                        <Button onPress={() => dispatch({ name: 'closeModal' })}>Cerrar</Button>
+                    </View>
                 </View>
             </Modal>
 
